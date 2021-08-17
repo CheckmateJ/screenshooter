@@ -36,12 +36,13 @@ const Screenshot = async () => {
                 height: config.viewportHeight ? config.viewportHeight : height
             });
 
-            var testElement = await page.$$(`${config.testSelector}`)
-            if (testElement.length < 1) {
-                console.log(url)
-                continue;
+            if(config.testSelector) {
+                var testElement = await page.$$(`${config.testSelector}`)
+                if (testElement.length < 1) {
+                    console.log(url)
+                    continue;
+                }
             }
-
             await cookie();
 
             try {
